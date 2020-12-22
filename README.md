@@ -20,3 +20,9 @@
 4. OK，all set. 在`data`目录下，你可以看到一个`README_for_zhihu.md`的文件，将它上传至知乎编辑器即可。
 
 Note:在上传前，先用浏览器验证一下README_for_zhihu.md中生成的图片可以访问
+
+# Thanks
+This script refers to the guys below.
+https://github.com/shangyu11/Markdown4Zhihu
+https://ipictures.github.io/
+
