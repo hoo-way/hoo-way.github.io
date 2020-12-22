@@ -15,16 +15,16 @@ Make sure you log into the saleforce and stop in the queue you want to monitor
 * Please find 3 important parameters in headers.
 
 Please see the picture below to know how to get cookies.
-![./img/01.jpg]((https://hoo-way.github.io/doc4zhihu/data/img/01.jpg)
+![./img/01.jpg]((https://hoo-way.github.io/doc4zhihu/data/)img/01.jpg)
 
 Please see the picture below to know how to get loadID(Orange circle),fwuid(Green circle) and token(Blue circle).
-![./img/03.png]((https://hoo-way.github.io/doc4zhihu/data/img/03.png)
+![./img/03.png]((https://hoo-way.github.io/doc4zhihu/data/)img/03.png)
 # Find Queue id, user id
 Queue id can be found in your link address, such as https://siliconlabs.lightning.force.com/lightning/o/Case/list?filterName=00B1M0000096zClUAI
 "00B1M0000096zClUAI" is the queue id.
 
 User id can be found in your user page.
-![./img/04.png]((https://hoo-way.github.io/doc4zhihu/data/img/04.png)
+![./img/04.png]((https://hoo-way.github.io/doc4zhihu/data/)img/04.png)
 
 # Fill up paramter into python file
 Open configuration.py and fill up the 5 paramters above.
@@ -75,7 +75,7 @@ python start_spider
 
 # Note
 * If the spider run correctly, it will output the caputure result. If the case meet the rule in take_list, it will be assigned to you by spider.
-![./img/05.png]((https://hoo-way.github.io/doc4zhihu/data/img/05.png)
+![./img/05.png]((https://hoo-way.github.io/doc4zhihu/data/)img/05.png)
 * Spider caputre the case info every 1 minute
 * We can log into salesforce without passowrd since we feed it cookies(include token and loadID)  from chrome, the cookies has life cycle, about 2-3 days. That means you may need to feed them again after the cookies became invalid.
 
