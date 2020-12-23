@@ -35,7 +35,7 @@ def process_for_zhihu():
         with open(args.input.parent/(args.input.stem+"_for_zhihu.md"), "w+", encoding=chatest["encoding"]) as fw:
             fw.write(lines)
         print(args.input.stem+"_for_zhihu.md")
-        print("------------end process---------\n")
+        print("------------end process--------\n")
         git_ops()
 
 # Deal with the formula and change them into Zhihu original format
