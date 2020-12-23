@@ -27,14 +27,14 @@ def process_for_zhihu():
         s = f.read()
         chatest = chardet.detect(s)
     # print(chatest)
-    print("---------start to process------")
+    print("\n---------start to process------")
     with open(str(args.input),"r",encoding=chatest["encoding"]) as f:
         lines = f.read()
         lines = image_ops(lines)
         lines = table_ops(lines)
         with open(args.input.parent/(args.input.stem+"_for_zhihu.md"), "w+", encoding=chatest["encoding"]) as fw:
             fw.write(lines)
-        print("---------generated------\n")
+        print("---------generated------")
         print(args.input.stem+"_for_zhihu.md")
         print("---------end process------\n")
         git_ops()
