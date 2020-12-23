@@ -44,7 +44,7 @@ def rename_image_ref(m, original=True):
         image_ref_name = Path(m.group(2)).name
         return "!["+m.group(2)+"]("+GITHUB_REPO_PREFIX+str(image_path)+"/"+image_ref_name+")"
     else:
-        image_path = re.sub(r"./","",os.path.dirname (m.group(1) ))
+        image_path = re.sub(r"\./","",os.path.dirname (m.group(1) ))
         print(image_path)
         image_ref_name = Path(m.group(1)).name
         return '<img src="'+GITHUB_REPO_PREFIX+str(image_path)+"/" +image_ref_name +'"'
