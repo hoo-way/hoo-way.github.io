@@ -11,7 +11,7 @@
 - [5. Conclusion](#5-conclusion)
 </details>
 
-***
+***  
 
 # 1. Introduction
 The documentation show you how to setup the Zigbee or Zigbee+BLE DMP demo with Alexa, and how to control them with Alexa voice command.   
@@ -30,9 +30,9 @@ Alexa is Amazon’s voice service and the brain behind millions of devices like 
 ## 1.2. Control Zigbee device with Alexa
 As mentioned above, a lot of devices can be added to the Alexa smart home ecosystem, and be controlled by voice. The documentation will show you how to add the Zigbee products into the Alexa ecosystem.   
 Below is the devices be included in the show.   
-* Echo Plus
-* ZigBee Lighting Reference Design demo board (RD-0098-0401) or Might Gecko Wireless starter kit
-* Sengled Bulb
+* Echo Plus  
+* ZigBee Lighting Reference Design demo board (RD-0098-0401) or Might Gecko Wireless starter kit  
+* Sengled Bulb  
 
 <div align="center">
   <img src="https://hoo-way.github.io/doc4zhihu/data/files/CM-Smart-Speaker/echo-plus-dmp-demo.png">  
@@ -45,19 +45,19 @@ To start, download the Amazon Alexa app for your iPhone or Android device. You'l
 For android devices, if you cannot access the Google Play or Amazon Appstore directly, please try to download the APK and install it manually. For ios devices, the Appstore do not support Alexa application download outside USA, you may need a USA Appstore account.   
 
 With the app installed on your device and your Echo unwrapped and plugged into a power source, follow these steps to set it up:   
-* Register Amazon account and login.  
+* Register Amazon account and login.    
 <div align="center">
   <img src="https://hoo-way.github.io/doc4zhihu/data/files/CM-Smart-Speaker/echo-plus-setup1.png">  
 </div>  
 
-* After login, you can setup the Echo plus follow the voice guide of the Echo plus. Network accessing is necessary for using the voice server of Alexa, and after setup the Echo plus, click “Setting” -> “Smart Home” to manage your devices.   
+* After login, you can setup the Echo plus follow the voice guide of the Echo plus. Network accessing is necessary for using the voice server of Alexa, and after setup the Echo plus, click “Setting” -> “Smart Home” to manage your devices.     
 
 <div align="center">
   <img src="https://hoo-way.github.io/doc4zhihu/data/files/CM-Smart-Speaker/echo-plus-setup2.png">  
 </div>  
 </br>
 
-* Add the new devices by clicking DISCOVER, the Echo Plus will start to discovery the Zigbee smart devices nearby, and you can create group for difference device for easy controlling.   
+* Add the new devices by clicking DISCOVER, the Echo Plus will start to discovery the Zigbee smart devices nearby, and you can create group for difference device for easy controlling.     
 <div align="center">
   <img src="https://hoo-way.github.io/doc4zhihu/data/files/CM-Smart-Speaker/echo-plus-setup3.png">  
 </div>  
@@ -95,18 +95,18 @@ Similar as the light demo with our DMP demo board or wireless starter kit, you a
 Here is example Alexa voice Commands.   
 
 Turning lights on and off:   
-* "Alexa, turn on [bulb/group name]"
-* "Alexa, turn off [bulb/group name]"
-* "Alexa, switch on [bulb/group name]"
-* "Alexa, switch off [bulb/group name]"
+* "Alexa, turn on [bulb/group name]"  
+* "Alexa, turn off [bulb/group name]"  
+* "Alexa, switch on [bulb/group name]"  
+* "Alexa, switch off [bulb/group name]"  
 
 Adjusting bulb brightness:   
 (The "brighten" and "dim" commands will increase/decrease brightness by 25%. The "set" command must be used in conjunction with the word "percent".)   
-* "Alexa, brighten [bulb/group name]"
-* "Alexa, dim [bulb/group name]"
-* "Alexa, set [bulb/group name] to [X%]"
-* "Alexa, set brightness of [bulb/group name] to [X%]"
-* "Alexa, set [bulb/group name]'s brightness to [X%]"
+* "Alexa, brighten [bulb/group name]"  
+* "Alexa, dim [bulb/group name]"  
+* "Alexa, set [bulb/group name] to [X%]"  
+* "Alexa, set brightness of [bulb/group name] to [X%]"  
+* "Alexa, set [bulb/group name]'s brightness to [X%]"  
 
 # 5. Conclusion
 The Amazon Echo Plus has a built-in smart home hub that seamlessly connects and controls Zigbee smart devices, such as light bulbs, door locks, in-wall switches, and plugs, without the need for separate hubs or a Smart Home skill. It's pretty easy to build your home automation system with this powerful smart speaker.   

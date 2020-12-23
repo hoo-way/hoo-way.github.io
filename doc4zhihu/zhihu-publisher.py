@@ -32,7 +32,7 @@ def process_for_zhihu():
         lines = f.read()
         lines = image_ops(lines)
         lines = table_ops(lines)
-        print(list_ops(lines))
+        lines = list_ops(lines)
         with open(args.input.parent/(args.input.stem+"_for_zhihu.md"), "w+", encoding=chatest["encoding"]) as fw:
             fw.write(lines)
         print(args.input.stem+"_for_zhihu.md")
@@ -46,8 +46,8 @@ def rename_list_ref(l,original=True):
     return ('*' +l.group(1)  + '  \n')
 
 def list_ops(_lines):
-    # functools.partial(rename_list_ref,original=True)
-    _lines = re.sub("\*(.*)\n","victorhu", _lines)
+    _lines = re.sub("\*(.*)\n",functools.partial(rename_list_ref,original=True), _lines)
+    return _lines
 
 # Deal with the formula and change them into Zhihu original format
 def formula_ops(_lines):
