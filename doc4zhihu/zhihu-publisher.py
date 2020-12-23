@@ -42,8 +42,8 @@ def process_for_zhihu():
 #Deal with list
 
 def rename_list_ref(l,original=True):
-    print(l)
-    # return re.sub(r"\n","  \n",l)
+    print(re.sub(r"\n","  \n",l.group(1) ))
+    # return re.sub(r"\n","  \n",l.group(2) ))
 
 def list_ops(_lines):
     _lines = re.sub(r"\*(.*)\n",functools.partial(rename_list_ref,original=True), _lines)
