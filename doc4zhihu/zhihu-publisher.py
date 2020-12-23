@@ -32,7 +32,7 @@ def process_for_zhihu():
         lines = f.read()
         lines = image_ops(lines)
         lines = table_ops(lines)
-        list_ops(lines)
+        print(list_ops(lines))
         with open(args.input.parent/(args.input.stem+"_for_zhihu.md"), "w+", encoding=chatest["encoding"]) as fw:
             fw.write(lines)
         print(args.input.stem+"_for_zhihu.md")
@@ -43,7 +43,7 @@ def process_for_zhihu():
 
 def rename_list_ref(l,original=True):
     # print(l.group(1))
-    print('*' +l.group(1)  + '  \n')
+    return ('*' +l.group(1)  + '  \n')
 
 def list_ops(_lines):
     _lines = re.sub(r"\*(.*)\n",functools.partial(rename_list_ref,original=True), _lines)
