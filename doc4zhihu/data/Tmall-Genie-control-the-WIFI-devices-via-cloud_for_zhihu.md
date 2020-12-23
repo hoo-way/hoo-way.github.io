@@ -179,4 +179,3 @@ The communication between devices and web server is based on Http protocol. The 
 3.  The web server returns the state value of the device.
 4.  The device parses the http response and update LED0 according to the results.
 
-All source code can be found in stash: [https://stash.silabs.com/projects/MCU8_FW/repos/examples/browse/internal/connect_tmall_genie](https://stash.silabs.com/projects/MCU8_FW/repos/examples/browse/internal/connect_tmall_genie)
