@@ -26,13 +26,28 @@ def process_for_zhihu():
         print(str(args.input))
         s = f.read()
         chatest = chardet.detect(s)
-    print(chatest)
+    # print(chatest)
+    print("---------start to process------")
     with open(str(args.input),"r",encoding=chatest["encoding"]) as f:
         lines = f.read()
         lines = image_ops(lines)
+        lines = table_ops(lines)
         with open(args.input.parent/(args.input.stem+"_for_zhihu.md"), "w+", encoding=chatest["encoding"]) as fw:
             fw.write(lines)
+        print("---------generated------\n")
+        print(args.input.stem+"_for_zhihu.md")
+        print("---------end process------\n")
         git_ops()
+
+# Deal with the formula and change them into Zhihu original format
+def formula_ops(_lines):
+    _lines = re.sub('((.*?)\$\$)(\s*)?([\s\S]*?)(\$\$)\n', '\n<img src="https://www.zhihu.com/equation?tex=\\4" alt="\\4" class="ee_img tr_noresize" eeimg="1">\n', _lines)
+    _lines = re.sub('(\$)(?!\$)(.*?)(\$)', ' <img src="https://www.zhihu.com/equation?tex=\\2" alt="\\2" class="ee_img tr_noresize" eeimg="1"> ', _lines)
+    return _lines
+    
+# Deal with table. Just add a extra \n to each original table line
+def table_ops(_lines):
+    return re.sub("\|\n",r"|\n\n", _lines)
 
 
 # The support function for image_ops. It will take in a matched object and make sure they are competible
@@ -45,18 +60,13 @@ def rename_image_ref(m, original=True):
         return "!["+m.group(2)+"]("+GITHUB_REPO_PREFIX+str(image_path)+"/"+image_ref_name+")"
     else:
         image_path = re.sub(r"\./","",os.path.dirname (m.group(1) ))
-        print(image_path)
+        # print(image_path)
         image_ref_name = Path(m.group(1)).name
         return '<img src="'+GITHUB_REPO_PREFIX+str(image_path)+"/" +image_ref_name +'"'
     # print(os.path.dirname (m.group(2) ))
     # print(image_folder_path.name)
     # if not Path(m.group(1)).is_file():
     #     return m.group(0)
-
-    
-
-    
-
 
 
 # Search for the image links which appear in the markdown file. It can handle two types: ![]() and <img src="LINK" alt="CAPTION" style="zoom:40%;" />.
