@@ -46,7 +46,8 @@ def rename_list_ref(l,original=True):
     return ('*' +l.group(1)  + '  \n')
 
 def list_ops(_lines):
-    _lines = re.sub("\*(.*)\n",functools.partial(rename_list_ref,original=True), _lines)
+    # functools.partial(rename_list_ref,original=True)
+    _lines = re.sub("\*(.*)\n","victorhu", _lines)
 
 # Deal with the formula and change them into Zhihu original format
 def formula_ops(_lines):
