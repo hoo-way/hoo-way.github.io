@@ -132,7 +132,7 @@ Silicon Labs公司的Simplicity Studio可以从[官网](https://www.silabs.com/p
    - [x] Event `softWdgEventControl`,  Handler `softWdgEventHandler`
    - [x] Event `wifiCheckEventControl`,  Handler `wifiCheckEventHandler`
 8. 选择`Includes` tab, 添加如下自定义token:
-    ``` C
+    ```C  
     /***************************************************************************//**  
     * @file  
     * @brief Tokens for Z3Aliyun301.  
