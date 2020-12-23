@@ -38,16 +38,23 @@ def process_for_zhihu():
 # The support function for image_ops. It will take in a matched object and make sure they are competible
 def rename_image_ref(m, original=True):
     global image_folder_path
-    print(m.group(1))
-    # image_path = re.sub("./","",os.path.dirname (m.group(2) ))
-    # # print(os.path.dirname (m.group(2) ))
-    # # print(image_folder_path.name)
-    # # if not Path(m.group(1)).is_file():
-    # #     return m.group(0)
+    # print(m.group(1))
+    if original == True:
+        image_path = re.sub("./","",os.path.dirname (m.group(2) ))
+        image_ref_name = Path(m.group(2)).name
+        return "!["+m.group(2)+"]("+GITHUB_REPO_PREFIX+str(image_path)+"/"+image_ref_name+")"
+    else:
+        image_path = re.sub("./","",os.path.dirname (m.group(1) ))
+        image_ref_name = Path(m.group(1)).name
+        return "!["+m.group(1)+"]("+GITHUB_REPO_PREFIX+str(image_path)+"/"+image_ref_name+")"
+    # print(os.path.dirname (m.group(2) ))
+    # print(image_folder_path.name)
+    # if not Path(m.group(1)).is_file():
+    #     return m.group(0)
 
-    # image_ref_name = Path(m.group(2)).name
+    
 
-    # return "!["+m.group(2)+"]("+GITHUB_REPO_PREFIX+str(image_path)+"/"+image_ref_name+")"
+    
 
 
 
