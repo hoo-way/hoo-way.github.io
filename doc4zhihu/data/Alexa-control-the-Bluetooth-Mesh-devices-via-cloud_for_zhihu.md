@@ -99,7 +99,7 @@ A Bluetooth mesh network is going to be controlled by an Amazon Echo Plus 2 via 
 ## 2.1. Topology
 Below is the block diagram of this project.
 <div align="center">
-  ![./files/CM-Smart-Speaker/topology_block_diagram.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/topology_block_diagram.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/topology_block_diagram.png">
 </div>
 
 ### 2.1.1. Amazon Echo Plus 2
@@ -109,7 +109,7 @@ Amazon Echo is a brand of smart speakers developed by Amazon. Echo devices conne
 AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume - there is no charge when your code is not running. 
 With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.
 <div align="center">
-  ![./files/CM-Smart-Speaker/diagram_Lambda-HowItWorks.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/diagram_Lambda-HowItWorks.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/diagram_Lambda-HowItWorks.png">
 </div>
 
 ### 2.1.3. Alexa Skill
@@ -130,17 +130,17 @@ The provisioner in the network to provision new devices and receive commands fro
 There are total two Bluetooth mesh nodes in the network, a light node and a switch node. Once the user presses the button on the switch node, the light node would receive a BLE mesh message and turn on/off the embedded LED on it.  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/wireless_gecko_btmesh_light_node.jpg](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/wireless_gecko_btmesh_light_node.jpg)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/wireless_gecko_btmesh_light_node.jpg">
 </div>
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/wireless_gecko_btmesh_switch_node.jpg](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/wireless_gecko_btmesh_switch_node.jpg)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/wireless_gecko_btmesh_switch_node.jpg">
 </div>
 
 Also, the switch node is capable to change the online shadow document. When the user give it a long press on left button, the switch node will send a message to provisioner to update the online shadow document.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/local_message_flow.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/local_message_flow.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/local_message_flow.png">
 </div>
 
 ## 2.2. Technical details:
@@ -255,7 +255,7 @@ The lambda function has multiple servers in different areas of the world. Howeve
 It is worth to mention the rating of the lambda function. The AWS lambda has free tiers for each user, up to 1,000,000 free requests per month. In this project, only requests to lambda function and IoT Core are used, so the free tier is totally enough.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/aws_lambda_free_tiers.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/aws_lambda_free_tiers.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/aws_lambda_free_tiers.png">
   <center> <b>Figure: AWS lambda free tiers</b> </center>
 </div>  
 
@@ -263,7 +263,7 @@ It is worth to mention the rating of the lambda function. The AWS lambda has fre
 AWS IoT Core is another platform of AWS IoT service. It stores the status information of the remote IoT devices in a special service called Thing Shadow. Briefly speaking, the thing shadow is a JSON document for recording the real-time changes of the device status.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/iot_core_thing_shadow.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iot_core_thing_shadow.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iot_core_thing_shadow.png">
   <center> <b>Figure: IoT Core Thing Shadow</b> </center>
 </div>  
 
@@ -271,7 +271,7 @@ The Thing shadow can be modified by both lambda function and local mesh network.
 The “state” and “desired/reported” is required for each document uploaded, and once the user uploads a new document, only the items in the new document will be updated. The rest of the items will remain the same value. Also, if the desired/reported sections are not the same value, the document will automatically generate a new section called delta, which records the differences between the desired section and reported section.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/jason_document_for_thing_shadow.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/jason_document_for_thing_shadow.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/jason_document_for_thing_shadow.png">
   <center> <b>Figure: JSON document for thing shadow</b> </center>
 </div>  
 
@@ -284,7 +284,7 @@ For the second one, the callback mechanism is used which will notify of differen
 The second method is recommended, and you can find all of the source for these two methods from the [github](https://github.com/ChengYuan-CY/amazon-freertos/blob/master/demos/shadow/).
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/esp32.jpg](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp32.jpg)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp32.jpg">
   <center> <b>Figure: ESP32</b> </center>
 </div>  
 
@@ -296,7 +296,7 @@ The provisioner in the network is responsible for establishing the mesh network,
 This project uses different protocols to do communications among different parts. The MQTT protocol is utilized for communicating between the ESP32 and **AWS IoT Core** console, where the thing shadow document is stored; and the Bluetooth mesh is used to organize local devices. Between the ESP32 and the provisioner node in the mesh network, a self-defined simple UART protocol is also used to transmit the devices information and attribute information. Each packet of the UART protocol contains 41 char bytes, and the format is shown below.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/uart_packet_format.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/uart_packet_format.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/uart_packet_format.png">
   <center> <b>Figure: UART packet format</b> </center>
 </div>  
 </br>
@@ -304,22 +304,22 @@ This project uses different protocols to do communications among different parts
 The first byte is used to identify what type of operation is. Currently, the operation supports only change device state; the following bytes are used to determine the device type, the attribute name, and the attribute value. What is worth to pay attention is that the attribute value possibly number or string, therefore, in the code it has to be adjusted using the function “atoi()”
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/operation_type_definition.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/operation_type_definition.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/operation_type_definition.png">
   <center> <b>Figure: Operation type definition</b> </center>
 </div>  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/device_type_definition.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/device_type_definition.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/device_type_definition.png">
   <center> <b>Figure: Device type definition</b> </center>
 </div>  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/attribute_type_definition.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/attribute_type_definition.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/attribute_type_definition.png">
   <center> <b>Figure: Attribute type definition</b> </center>
 </div>  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/light_default_data_definition.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/light_default_data_definition.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/light_default_data_definition.png">
   <center> <b>Figure: Light default data definition</b> </center>
 </div>  
 
@@ -343,7 +343,7 @@ In this section, a step-by-step instruction will be provided to the reader to re
 ## 3.2. Procedures:
 The picture below illustrates the block diagram of controlling Physical Device (that is Bluetooth Mesh devices in this project) via Amazon Echo. We will split the procedures as several parts below.
 <div align="center">
-  ![./files/CM-Smart-Speaker/replicate_step0.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step0.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step0.png">
 </div>  
 </br>
 
@@ -355,7 +355,7 @@ The picture below illustrates the block diagram of controlling Physical Device (
 
 ###	3.2.1. Create and Configure device within AWS IoT
 <div align="center">
-  ![./files/CM-Smart-Speaker/replicate_step1.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step1.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step1.png">
 </div>  
 </br>
 
@@ -370,7 +370,7 @@ Log into [AWS IoT console](https://us-east-1.console.aws.amazon.com/iot/home?reg
 Navigate to the **IoT Core Service**, below is the screenshot if you log into the AWS IoT console successfully.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/login_aws_iot_console.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/login_aws_iot_console.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/login_aws_iot_console.gif">
   <center> <b>Figure: AWS IoT console</b> </center>
 </div>  
 
@@ -381,7 +381,7 @@ click Manage -> Thing -> Register a thing -> Create -> Create a Single thing -> 
 **Note**: Carefully preserve the thing certificates downloaded. The keys will be used in the amazon freeRTOS SDK running on the ESP32.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_thing.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_thing.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_thing.gif">
   <center> <b>Figure: Create a thing</b> </center>
 </div>  
 </br>
@@ -391,21 +391,21 @@ AWS IoT policies are used to authorize your device to perform AWS IoT operations
 Go back to console -> secure -> policy -> create. The policy statements define the types of actions that can be performed by a resource, you can just follow the screenshot below to set your statement for this policy.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_policy.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_policy.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_policy.gif">
   <center><b>Figure: Create a policy in this interface</b></center>
 </div>  
 </br>
 
 After creating the policy, the UI will similar like below.
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_policy_result.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_policy_result.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_policy_result.png">
 </div>  
 </br>
 
 #### 3.2.1.5. Attach an AWS IoT Policy to a Device Certificate
 Go back to the console, open your thing ```esp32_btmesh_bridge```. Click Security -> Your certificate -> Policies -> Actions -> Attach Policy. And choose the Policy you created just now, and click Attach then.
 <div align="center">
-  ![./files/CM-Smart-Speaker/attach_policy_to_ting.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/attach_policy_to_ting.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/attach_policy_to_ting.gif">
   <center> <b>Figure: Attach Policy</b> </center>
 </div>  
 </br>
@@ -446,7 +446,7 @@ The Device Shadow service maintains a shadow for each device you connect to AWS 
 Click on the Manage -> Thing -> Your Things -> Shadow -> Edit, paste the initial shadow document below. The initial shadow document must have the same desired and reported section, if you want to change the shadow document, remember to change the shadow document template on both the Things board and Alexa skill, otherwise the program won’t run correctly.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/shadow_document.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/shadow_document.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/shadow_document.gif">
   <center><b>Figure: Shadow document</b></center>
 </div>  
 </br>
@@ -522,13 +522,13 @@ Click on the “Interact” option, choose the corresponding topic which represe
 Receiving the MQTT message via the subscribing topic ```$aws/things/<things Name>/shadow/update/accepted``` means that the thing shadow works now.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/topic_to_subscribe.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/topic_to_subscribe.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/topic_to_subscribe.png">
   <center><b>Figure: Topic to subscribe</b></center>
 </div>  
 </br>  
 
 <div align="center">  
-  ![./files/CM-Smart-Speaker/subscribe_the_topic_and_publish_content_you_want.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/subscribe_the_topic_and_publish_content_you_want.gif)>  
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/subscribe_the_topic_and_publish_content_you_want.gif">  
   <center><b>Figure: Subscribe the topic and publish content you want</b></center>  
 </div>  
 </br>  
@@ -603,7 +603,7 @@ You provide code to handle directives in an AWS Lambda function. Your skill rece
 
 After creating and configuring device within AWS IoT, we need to create Alexa Smart Home Skill.
 <div align="center">
-  ![./files/CM-Smart-Speaker/replicate_step2.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step2.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/replicate_step2.png">
 </div>
 </br>
 
@@ -614,12 +614,12 @@ To configure a new smart home skill, you need an account on the Amazon Developer
 Choose Create skill->Smart Home->Enter the skill name->Create. Once you created the Smart Home Skill, <span id = "YourSkillID"><font color="red">Your Skill ID</font></span> will be assigned that will used by Lambda function.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_new_skill.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_new_skill.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_new_skill.png">
 </div>
 </br>
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_new_skill_2.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_new_skill_2.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_new_skill_2.png">
 </div>
 </br>
 
@@ -632,12 +632,12 @@ Navigate back to your skill in the Developer Console. Under **2. Smart Home serv
 Therefore, the skill is associated with the lambda function.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/fill_default_endpoint_info.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/fill_default_endpoint_info.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/fill_default_endpoint_info.png">
 </div>   
 </br>
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/lambda_function_adding_alexa_smart_home_trigger.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_adding_alexa_smart_home_trigger.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_adding_alexa_smart_home_trigger.png">
   <center> <b>Figure: Lambda function adding Alexa smart home trigger</b> </center>
 </div>  
 
@@ -656,20 +656,20 @@ https://developer.amazon.com/docs/devconsole/build-your-skill.html#account-linki
 * iii. Click on “Create a New Security Profile”
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/LWA_setup.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup.png">
 </div> 
 
 * iv. Fill in all three required fields to create your security profile and click “Save”. 
 For the “Consent Privacy Notice URL”, please fill it with your own privacy notice URL. If there is no privacy notice, you can just fill it with ```https://www.privacypolicies.com/blog/gdpr-consent-examples/```.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/security_profile_management.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/security_profile_management.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/security_profile_management.png">
 </div> 
 
 * v. Before you complete this step, be sure to click on the link named “Show Client ID and Client Secret” and save these values to a secure location so they're easily available later. You’ll need these values later in a next step.  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/LWA_setup.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup.gif">
 </div> 
 
 
@@ -691,13 +691,13 @@ For the “Consent Privacy Notice URL”, please fill it with your own privacy n
 After mutual association, the second step would be account linking. On the Alexa console, click on the account linking option, input the authorization URI and the access token URI as shown below.
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/account_linking.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/account_linking.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/account_linking.png">
   <center> <b>Figure: Account linking</b> </center>
 </div>  
 </br>
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/LWA_setup_web.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup_web.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/LWA_setup_web.png">
 </div>  
 </br>
 
@@ -705,18 +705,18 @@ After mutual association, the second step would be account linking. On the Alexa
 Amazon console also supports the skill-testing.
 However, to test a SmartHome or Video skill, you need first enable the skill with the Alexa companion app (cannot finish it with webpage).
 <div align="center">
-  ![./files/CM-Smart-Speaker/enable_your_skill_on_app.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/enable_your_skill_on_app.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/enable_your_skill_on_app.png">
 </div>  
 </br>
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/enable_skill_on_alexa_app.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/enable_skill_on_alexa_app.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/enable_skill_on_alexa_app.gif">
 </div>  
 </br>
 
 And then you can try to discovery new devices with the App. After finishing the discoverying process, it will list all of the devices it discovered.
 <div align="center">
-  ![./files/CM-Smart-Speaker/discovery_new_devices.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/discovery_new_devices.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/discovery_new_devices.gif">
 </div>  
 </br>
 
@@ -725,7 +725,7 @@ The developer can choose either typing or using JSON formatted directive to test
 For example, if the user type or say “turn off light”, the Alexa server will send a turn-off directive to the lambda(the skill holder server).
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/skill_test.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/skill_test.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/skill_test.png">
   <center> <b>Figure: Skill-testing</b> </center>
 </div>  
 
@@ -749,7 +749,7 @@ The code for your smart home skill is hosted as a Lambda function on AWS. AWS La
 * Click Create Function
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/create_a_lambda_function.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_lambda_function.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/create_a_lambda_function.gif">
 </div>  
 </br>
 
@@ -759,14 +759,14 @@ The code for your smart home skill is hosted as a Lambda function on AWS. AWS La
 * Click Submit
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/add_trigger_for_lambda_function.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/add_trigger_for_lambda_function.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/add_trigger_for_lambda_function.gif">
 </div>  
 </br>
 
 8.	Click the icon of the lambda function for Configuration
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/lambda_function_configuration.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_configuration.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_configuration.png">
 </div>  
 </br>
 
@@ -786,14 +786,14 @@ And also you can just reuse the lambda function we have implemented for this pro
 And also please pay attention to the <span id = "ExistingRole"><font color="red">"Existing role"</font></span> of the Lambda function, we will configure the role in the next section [Configure the IAM Role for Lambda](#configure-the-iam-role-for-lambda).
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/lambda_function_execution_role.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_execution_role.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_execution_role.png">
 </div>  
 </br>
 
 After uploading the ZIP package successfully, please make sure that the directory structure is similar as below, and the lambda function file name should be lambda_function.py
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/lambda_function_configuration_3.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_configuration_3.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/lambda_function_configuration_3.png">
 </div>  
 
 #### 3.2.3.2. Configure the IAM Role for Lambda
@@ -809,12 +809,12 @@ Attach the following IAM policies to the role used by the Lambda function:
 * AWSLambdaFullAccess  
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/iam_setting_for_lambda.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iam_setting_for_lambda.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iam_setting_for_lambda.gif">
 </div>  
 </br>
 After that, the Lambda function created above should able to access the following resources now.
 <div align="center">
-  ![./files/CM-Smart-Speaker/iam_setting_for_lambda_done.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iam_setting_for_lambda_done.png)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/iam_setting_for_lambda_done.png">
 </div>  
 </br>
 
@@ -844,7 +844,7 @@ Leave Create new test event selected. For Event template, leave the default Hell
 ```
 
 <div align="center">
-  ![./files/CM-Smart-Speaker/test_lambda_function.gif](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/test_lambda_function.gif)>
+  <img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/test_lambda_function.gif">
 </div>  
 </br>
 
@@ -917,20 +917,20 @@ ESP-IDF is the official development framework for the ESP32 chip. Please note th
 The installer will automatically install the **ESP32 Xtensa gcc toolchain**, **Ninja** build tool, and a configuration tool called **mconf-idf**. The installer can also download and run installers for CMake and Python 2.7 if these are not already installed on the computer. However, the CMake included in the installer is an elder version, for CMake installing method, please read the section [Install CMake](#install-cmake) below.
 
 <div align="center">
-![./files/CM-Smart-Speaker/esp_idf_tool_setup_0.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp_idf_tool_setup_0.png)>
+<img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp_idf_tool_setup_0.png">
 </div>  
 </br>
 
 After setup has finished installing ESP-IDF tools, the GUI now should looks like this. 
    
 <div align="center">
-![./files/CM-Smart-Speaker/esp_idf_tool_setup.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp_idf_tool_setup.png)>
+<img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/esp_idf_tool_setup.png">
 </div>  
 </br>
 
 Click the **Finish** button. By default, the ESP-IDF installer updates the Windows Path environment variable automatically so all of these tools can be run from anywhere.
 <div align="center">
-![./files/CM-Smart-Speaker/installer_update_path_environment.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/installer_update_path_environment.png)>
+<img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/installer_update_path_environment.png">
 </div>  
 </br>  
 
@@ -950,7 +950,7 @@ Change directories to the build directory ```your-build-directory``` you just sp
 Invoke Ninja to build the application.
 ```ninja```
 <div align="center">
-![./files/CM-Smart-Speaker/ninja_build_project.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/ninja_build_project.png)>
+<img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/ninja_build_project.png">
 </div>  
 </br>
 
@@ -984,7 +984,7 @@ If you are using the amazon freeRTOS sdk cloned from Amazon repo, please open th
 The WiFi settings can be done in the file ```…/demos/include/aws_clientcrediential.h```
 Set ```clientcredentialMQTT_BROKER_ENDPOINT``` as your AWS IoT endpoint. You can find it from the Things' interact information.
 <div align="center">
-![./files/CM-Smart-Speaker/aws_iot_endpoint_information.png](https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/aws_iot_endpoint_information.png)>
+<img src="https://hoo-way.github.io/doc4zhihu/data/fileCM-Smart-Speaker/aws_iot_endpoint_information.png">
 </div>  
 </br>  
 
