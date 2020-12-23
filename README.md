@@ -4,8 +4,8 @@
 
 ## 环境
 1. 安装python3
-2. 安装 `ipi3 install pillow `
-3. 安装 `ipi3 install pathlib2 `
+2. 安装 `pip3 install pillow `
+3. 安装 `pip3 install pathlib2 `
 
 ## 使用方法
 
